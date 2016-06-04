@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+
+#dailyImg {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
