@@ -30,3 +30,7 @@ Be sure to install Karma CLI and PhantomJS
 npm install -g karma-cli
 npm install -g phantomjs
 ```
+
+```
+webdriver-manager update
+```
