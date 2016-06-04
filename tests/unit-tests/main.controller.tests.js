@@ -8,6 +8,6 @@ describe('MainCtrl', function() {
   }));
 
   it('should have a title', function() {
-    expect(ctrl.title).toEqual('This is a test');
+    expect(ctrl.todaysPhoto).toEqual('http://www.planwallpaper.com/static/images/apple-iphone4s-wallpaper-26.jpg');
   });
 });

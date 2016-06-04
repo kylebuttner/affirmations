@@ -8,7 +8,7 @@ var app = angular.module('starter', ['ionic'])
 .controller('MainCtrl', function() {
   var self = this;
 
-  self.title = "This is a test";
+  self.todaysPhoto = "http://www.planwallpaper.com/static/images/apple-iphone4s-wallpaper-26.jpg";
 })
 
 .run(function($ionicPlatform) {
@@ -27,4 +27,4 @@ var app = angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
-})
+});
