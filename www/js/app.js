@@ -8,7 +8,11 @@ var app = angular.module('starter', ['ionic'])
 .controller('MainCtrl', function() {
   var self = this;
 
-  self.todaysPhoto = "http://www.planwallpaper.com/static/images/apple-iphone4s-wallpaper-26.jpg";
+  var today = new Date();
+
+  var date = today.getDate();
+
+  self.todaysPhoto = "http://static1.squarespace.com/static/559d04dbe4b0853d3bb2e832/575db0f09f7266835094e4af/575db1322b8ddeb3fba380e6/1465761079213/affirmation+" + date + ".PNG";
 })
 
 .run(function($ionicPlatform) {
