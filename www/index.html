@@ -30,11 +30,17 @@
     <ion-pane>
       <ion-header-bar class="bar-stable">
         <h1 class="title">The Positive Birth Company</h1>
-        <button ng-click="ctrl.saveImage()" name="button">Save</button>
       </ion-header-bar>
+
       <ion-content scroll="false">
         <img id="dailyImg" src="{{ctrl.todaysPhoto}}"/>
       </ion-content>
+
+      <ion-footer-bar class="bar-stable row">
+        <button class="col" ng-click="ctrl.saveImage()" name="button">Save</button>
+        <button class="col" ng-click="ctrl.saveImage()" name="button">Notifications</button>
+        <button class="col" ng-click="ctrl.saveImage()" name="button">Export</button>
+      </ion-footer-bar>
     </ion-pane>
   </body>
 </html>
