@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ngCordova'])
 
-.controller('MainCtrl', function() {
+.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform) {
   var self = this;
 
   var today = new Date();
@@ -44,7 +44,29 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
                     "http://static1.squarespace.com/static/559d04dbe4b0853d3bb2e832/575db0f09f7266835094e4af/575dbf1c044262f4e8912a92/1465761581703/affirmation+24.PNG?format=750w",
                     "http://static1.squarespace.com/static/559d04dbe4b0853d3bb2e832/575db0f09f7266835094e4af/575dbf28044262f4e8912ac8/1465761710041/affirmation+25.PNG?format=750w"];
 
-  self.todaysPhoto = photoArray[date];
+  function getTodaysPhoto() {
+    return photoArray[date];
+  }
+
+  self.todaysPhoto = getTodaysPhoto();
+
+  self.shareAnywhere = function() {
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing
+        .share("This is your message", "This is your subject", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
+    });
+  };
+
+  self.shareViaTwitter = function(message, image, link) {
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing.shareViaTwitter("This is your message", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
+      // $cordovaSocialSharing.canShareVia("twitter", message, image, link).then(function(result) {
+      //     $cordovaSocialSharing.shareViaTwitter("This is your message", "www/img/ionic.png", "https://www.thepolyglotdeveloper.com");
+      // }, function(error) {
+      //     alert("Cannot share on Twitter");
+      // });
+    });
+  };
 
 })
 
