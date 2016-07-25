@@ -10,6 +10,7 @@
 }*/
 
 .main-container {
+  background-color: #000;
   width: 100vw;
   height: 100vh;
 }
@@ -27,4 +28,41 @@
   margin: auto;
 }
 
-/*In app browser styles*/
+/* Footer */
+
+.footer-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ion {
+  font-size: 250%;
+  margin: auto;
+}
+
+.item {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+/* CSS Animations */
+
+.slide.ng-enter {
+  transition:0.1s linear all;
+  opacity:0;
+}
+
+.slide.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.slide.ng-leave {
+  transition:0.1s linear all;
+  opacity:1;
+}
+
+.slide.ng-leave.ng-leave-active {
+  opacity:0;
+}
