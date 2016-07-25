@@ -52,7 +52,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
   self.shareAnywhere = function() {
     var actionSheetOptions = {
-      title: 'What do you want with this image?',
+      title: 'Share this image via',
       buttonLabels: ['Facebook', 'Twitter'],
       addCancelButtonWithLabel: 'Cancel',
       androidEnableCancelButton : true,
@@ -64,22 +64,11 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         var index = btnIndex;
 
         if (index === 1) {
-          $cordovaSocialSharing.shareViaFacebook("This is the message", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
+          $cordovaSocialSharing.shareViaFacebook("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
         } else if (index === 2) {
-          $cordovaSocialSharing.shareViaTwitter("This is your message", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
+          $cordovaSocialSharing.shareViaTwitter("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
         }
       });
-      // $cordovaSocialSharing
-        // .share("This is your message", "This is your subject", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
-  };
-
-  self.shareViaTwitter = function(message, image, link) {
-      $cordovaSocialSharing.shareViaTwitter("This is your message", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
-      // $cordovaSocialSharing.canShareVia("twitter", message, image, link).then(function(result) {
-      //     $cordovaSocialSharing.shareViaTwitter("This is your message", "www/img/ionic.png", "https://www.thepolyglotdeveloper.com");
-      // }, function(error) {
-      //     alert("Cannot share on Twitter");
-      // });
   };
 
   self.saveToPhotoAlbum = function() {

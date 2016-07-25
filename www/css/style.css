@@ -9,8 +9,24 @@
   object-fit: cover;
 }*/
 
+
+body {
+  font-family: "Source Sans Pro";
+}
+
+.title {
+  color: #24282d;
+  font-family: "Source Sans Pro";
+  font-size: 150% !important;
+  font-weight: bold !important;
+}
+
+.bar.title {
+  text-align: center;
+}
+
 .main-container {
-  background-color: #000;
+  background-color: #fff;
   width: 100vw;
   height: 100vh;
 }
@@ -28,6 +44,14 @@
   margin: auto;
 }
 
+/* Header bars */
+
+.bar.bar-stable.header-bar {
+  background-color: #fff;
+  background-image: none;
+  border-bottom: dashed 5px #e8e8e8;
+}
+
 /* Footer */
 
 .footer-bar {
@@ -38,6 +62,7 @@
 }
 
 .ion {
+  color: #24282d;
   font-size: 250%;
   margin: auto;
 }
@@ -45,12 +70,20 @@
 .item {
   border-color: transparent;
   background-color: transparent;
+  color: #24282d;
+}
+
+.bar.bar-stable.footer-bar {
+  background-color: #fff;
+  background-image: none;
+  border-top: dashed 5px #e8e8e8;
+  height: 50px;
 }
 
 /* CSS Animations */
 
 .slide.ng-enter {
-  transition:0.1s linear all;
+  transition:0.2s linear all;
   opacity:0;
 }
 
@@ -59,7 +92,7 @@
 }
 
 .slide.ng-leave {
-  transition:0.1s linear all;
+  transition:0.2s linear all;
   opacity:1;
 }
 

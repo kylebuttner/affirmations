@@ -8,7 +8,7 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link href="css/style.css" rel="stylesheet">
-
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -30,8 +30,8 @@
   <body ng-app="affirmations" ng-controller="MainCtrl as ctrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable slide" ng-if="hide">
-        <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">The Positive Birth Company</h1>
+      <ion-header-bar class="bar-stable slide header-bar" ng-if="hide">
+        <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">THE POSITIVE BIRTH COMPANY</h1>
       </ion-header-bar>
 
       <div class="main-container" ng-click="hide=!hide">
@@ -42,7 +42,7 @@
 
       <ion-footer-bar class="footer-bar bar-stable slide" ng-if="hide">
         <i class="ion ion-ios-download-outline" on-tap="ctrl.saveToPhotoAlbum()" name="button"></i>
-        <ion-toggle>Notifications</ion-toggle>
+        <ion-toggle class="toggle-button">Notifications</ion-toggle>
         <i class="ion ion-share" on-tap="ctrl.shareAnywhere()"></i>
       </ion-footer-bar>
     </ion-pane>
