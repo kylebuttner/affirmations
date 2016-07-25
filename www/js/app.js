@@ -68,6 +68,13 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
     });
   };
 
+  self.saveToPhotoAlbum = function() {
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing
+        .saveToPhotoAlbum([getTodaysPhoto()], "Affirmation saved!", "Sorry, something went wrong. Please try again.");
+    });
+  };
+
   self.openLink = function(url) {
     $cordovaInAppBrowser.open(url, '_blank');
   };

@@ -39,9 +39,9 @@
       </div>
 
       <ion-footer-bar class="bar-stable row" ng-if="hide">
-        <button class="col" ng-click="hide=!hide" name="button">Save</button>
-        <button class="col" ng-click="ctrl.shareViaTwitter()" name="button">Notifications</button>
-        <i class="icon ion-share" ng-click="ctrl.shareAnywhere()"></i>
+        <button class="col" ng-click="ctrl.saveToPhotoAlbum()" name="button">Save</button>
+        <button class="col" name="button">Notifications</button>
+        <button ng-click="ctrl.shareAnywhere()">Share</button>
       </ion-footer-bar>
     </ion-pane>
   </body>
