@@ -25,7 +25,7 @@
     <script src="cordova.js"></script>
 
   </head>
-  <body ng-app="starter" ng-controller="MainCtrl as ctrl">
+  <body ng-app="affirmations" ng-controller="MainCtrl as ctrl">
 
     <ion-pane>
       <ion-header-bar class="bar-stable" ng-if="hide">
@@ -39,9 +39,9 @@
       </div>
 
       <ion-footer-bar class="bar-stable row" ng-if="hide">
-        <button class="col" ng-click="ctrl.saveToPhotoAlbum()" name="button">Save</button>
-        <button class="col" name="button">Notifications</button>
-        <button ng-click="ctrl.shareAnywhere()">Share</button>
+        <button class="col" on-tap="ctrl.saveToPhotoAlbum()" name="button">Save</button>
+        <button class="col" on-tap="ctrl.newAction()" name="button">Notifications</button>
+        <button on-tap="ctrl.shareAnywhere()">Share</button>
       </ion-footer-bar>
     </ion-pane>
   </body>

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ngCordova'])
+var app = angular.module('affirmations', ['ionic', 'ngCordova'])
 
 .controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser) {
   var self = this;
@@ -51,28 +51,26 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
   self.todaysPhoto = getTodaysPhoto();
 
   self.shareAnywhere = function() {
-    $ionicPlatform.ready(function() {
       $cordovaSocialSharing
         .share("This is your message", "This is your subject", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
-    });
   };
 
   self.shareViaTwitter = function(message, image, link) {
-    $ionicPlatform.ready(function() {
       $cordovaSocialSharing.shareViaTwitter("This is your message", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
       // $cordovaSocialSharing.canShareVia("twitter", message, image, link).then(function(result) {
       //     $cordovaSocialSharing.shareViaTwitter("This is your message", "www/img/ionic.png", "https://www.thepolyglotdeveloper.com");
       // }, function(error) {
       //     alert("Cannot share on Twitter");
       // });
-    });
   };
 
+  self.newAction = function() {
+    alert("Does this happen twice too?");
+  }
+
   self.saveToPhotoAlbum = function() {
-    $ionicPlatform.ready(function() {
       $cordovaSocialSharing
-        .saveToPhotoAlbum([getTodaysPhoto()], "Affirmation saved!", "Sorry, something went wrong. Please try again.");
-    });
+        .saveToPhotoAlbum([getTodaysPhoto()], "Affirmation saved!");
   };
 
   self.openLink = function(url) {
