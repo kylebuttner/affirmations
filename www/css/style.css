@@ -1,8 +1,28 @@
 /* Empty. Add your own CSS if you like */
 
-#dailyImg {
+/* For when images are rectangular */
+
+/*#dailyImg {
   display: block;
   width: 100vw;
   height: 100vh;
-  /*object-fit: cover;*/
+  object-fit: cover;
+}*/
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-container img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

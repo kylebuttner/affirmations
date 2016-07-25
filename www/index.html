@@ -29,10 +29,10 @@
 
     <ion-pane>
       <ion-header-bar class="bar-stable" ng-if="hide">
-        <h1 class="title">The Positive Birth Company</h1>
+        <h1 class="title"><a href="http://thepositivebirthcompany.co.uk/" target="_blank">The Positive Birth Company</a></h1>
       </ion-header-bar>
 
-      <div ng-click="hide=!hide">
+      <div class="main-container" ng-click="hide=!hide">
         <ion-content scroll="false">
           <img id="dailyImg" src="{{ctrl.todaysPhoto}}"/>
         </ion-content>
@@ -41,7 +41,7 @@
       <ion-footer-bar class="bar-stable row" ng-if="hide">
         <button class="col" ng-click="hide=!hide" name="button">Save</button>
         <button class="col" ng-click="ctrl.shareViaTwitter()" name="button">Notifications</button>
-        <button class="col" ng-click="ctrl.shareAnywhere()" name="button">Export</button>
+        <i class="icon ion-share" ng-click="ctrl.shareAnywhere()"></i>
       </ion-footer-bar>
     </ion-pane>
   </body>
