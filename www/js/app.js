@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ngCordova'])
 
-.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform) {
+.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser) {
   var self = this;
 
   var today = new Date();
@@ -68,6 +68,9 @@ var app = angular.module('starter', ['ionic', 'ngCordova'])
     });
   };
 
+  self.openLink = function(url) {
+    $cordovaInAppBrowser.open(url, '_blank');
+  };
 })
 
 .run(function($ionicPlatform) {
