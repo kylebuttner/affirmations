@@ -31,7 +31,13 @@
 
     <ion-pane>
       <ion-header-bar class="bar-stable slide header-bar" ng-if="hide">
-        <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">THE POSITIVE BIRTH COMPANY</h1>
+        <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">The Positive Birth Company</h1>
+      </ion-header-bar>
+      <ion-header-bar class="slide bar-subheader booking-ad" ng-if="hide" ng-hide="hidead">
+        <div class="booking-ad-text"  ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/contact/')">
+          Tap here to book hypnobirthing classes
+        </div>
+        <div class="booking-ad-close" on-tap="hidead=!hidead"><i class="ion ion-ios-close-empty"></i></div>
       </ion-header-bar>
 
       <div class="main-container" ng-click="hide=!hide">

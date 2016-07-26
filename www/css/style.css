@@ -14,11 +14,15 @@ body {
   font-family: "Source Sans Pro";
 }
 
-.title {
-  color: #24282d;
+h1 {
   font-family: "Source Sans Pro";
   font-size: 150% !important;
-  font-weight: bold !important;
+  font-weight: thin !important;
+}
+
+.title {
+  color: #fff !important;
+  text-align: center !important;
 }
 
 .bar.title {
@@ -26,7 +30,7 @@ body {
 }
 
 .main-container {
-  background-color: #fff;
+  background-color: #f8f8f8;
   width: 100vw;
   height: 100vh;
 }
@@ -47,9 +51,35 @@ body {
 /* Header bars */
 
 .bar.bar-stable.header-bar {
-  background-color: #fff;
+  background-color: #6c636e;
   background-image: none;
-  border-bottom: dashed 5px #e8e8e8;
+  border-color: transparent;
+}
+
+.booking-ad {
+  align-items: center;
+  background-color: #938995;
+  border-color: transparent;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  height: 30px;
+  padding: 0 30px;
+}
+
+.booking-ad-text {
+  color: #fff;
+}
+
+.booking-ad-close {
+  position: absolute;
+  right: 20px;
+}
+
+i.ion.ion-ios-close-empty {
+  color: #fff;
+  font-size: 200%;
+  padding-top: 2px;
 }
 
 /* Footer */
@@ -64,19 +94,34 @@ body {
 .ion {
   color: #24282d;
   font-size: 250%;
-  margin: auto;
+}
+
+.ion.ion-ios-download-outline {
+  left: 20px;
+  position: absolute;
+}
+
+.ion.ion-share {
+  position: absolute;
+  right: 20px;
 }
 
 .item {
   border-color: transparent;
   background-color: transparent;
   color: #24282d;
+  font-weight: lighter;
+}
+
+.item-toggle {
+  padding-right: 80px;
 }
 
 .bar.bar-stable.footer-bar {
-  background-color: #fff;
+  background-color: #EBEBEB;
   background-image: none;
-  border-top: dashed 5px #e8e8e8;
+  border-color: transparent;
+  color: #fff;
   height: 50px;
 }
 
