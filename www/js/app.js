@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
-.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet, $cordovaLocalNotification) {
+.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet, $cordovaLocalNotification, $ionicPopup) {
   var self = this;
 
   var today = new Date();
@@ -49,7 +49,8 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   }
 
   function getNext9am() {
-    if (today.getHours() < 9) {
+    var currentTime = new Date();
+    if (currentTime.getHours() < 9) {
       var todayAt9am = new Date();
       todayAt9am.setHours(9);
       todayAt9am.setMinutes(0);
@@ -104,10 +105,22 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         every: "minute",
         at: getNext9am()
       });
+      $ionicPopup.alert({
+        title: 'Notifications are now on!',
+        template: 'You\'ll receive a reminder to check your daily affirmation every morning at 9am.'
+      });
     } else {
       $cordovaLocalNotification.cancel(1);
+      $ionicPopup.alert({
+        title: 'Notifications have been disabled',
+        template: 'You\'ll no longer receive reminders to check your daily affirmation.'
+      });
     }
   }
+
+  $ionicPlatform.on('resume', function(){
+    today = new Date();
+  });
 
 })
 
