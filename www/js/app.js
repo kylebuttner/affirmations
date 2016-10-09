@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
-.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet) {
+.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet, $cordovaLocalNotification) {
   var self = this;
 
   var today = new Date();
@@ -89,11 +89,12 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
       cordova.plugins.Keyboard.disableScroll(true);
 
-      // $cordovaPlugin.someFunction().then(success, error);
-
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+    }
+    if(device.platform === "iOS") {
+      window.plugin.notification.local.promptForPermission();
     }
   });
 });
