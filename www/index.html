@@ -48,7 +48,7 @@
 
       <ion-footer-bar class="footer-bar bar-stable slide" ng-if="hide">
         <i class="ion ion-ios-download-outline" on-tap="ctrl.saveToPhotoAlbum()" name="button"></i>
-        <ion-toggle class="toggle-button">Notifications</ion-toggle>
+        <ion-toggle class="toggle-button" ng-model="ctrl.notificationsOn" ng-change="ctrl.toggleNotifications()">Notifications</ion-toggle>
         <i class="ion ion-share" on-tap="ctrl.shareAnywhere()"></i>
       </ion-footer-bar>
     </ion-pane>

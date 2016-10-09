@@ -48,6 +48,21 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
     return photoArray[date];
   }
 
+  function getNext9am() {
+    if (today.getHours() < 9) {
+      var todayAt9am = new Date();
+      todayAt9am.setHours(9);
+      todayAt9am.setMinutes(0);
+      return todayAt9am;
+    } else {
+      var tomorrowAt9am = new Date();
+      tomorrowAt9am.setDate(tomorrowAt9am.getDate() + 1)
+      tomorrowAt9am.setHours(9)
+      tomorrowAt9am.setMinutes(0);
+      return tomorrowAt9am
+    }
+  }
+
   self.todaysPhoto = getTodaysPhoto();
 
   self.shareAnywhere = function() {
@@ -79,6 +94,21 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   self.openLink = function(url) {
     $cordovaInAppBrowser.open(url, '_blank');
   };
+
+  self.toggleNotifications = function() {
+    if (self.notificationsOn) {
+      $cordovaLocalNotification.schedule({
+        id: 1,
+        title: "MotherZen",
+        text: "Check your affirmation for the day!",
+        every: "minute",
+        at: getNext9am()
+      });
+    } else {
+      $cordovaLocalNotification.cancel(1);
+    }
+  }
+
 })
 
 .run(function($ionicPlatform) {
@@ -90,11 +120,14 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
     if(device.platform === "iOS") {
-      window.plugin.notification.local.promptForPermission();
+      window.plugin.notification.local.registerPermission();
     }
+
   });
 });
