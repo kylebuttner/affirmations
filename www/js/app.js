@@ -124,7 +124,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaNetwork, $ionicPopup) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
 
@@ -140,6 +140,22 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
     if(device.platform === "iOS") {
       window.plugin.notification.local.registerPermission();
+    }
+
+    if($cordovaNetwork.isOffline()) {
+      $ionicPopup.show({
+        title: 'No network connection',
+        subtitle: 'Please make sure your phone is connected to the internet.',
+        buttons: [{
+          text: "Try again",
+          onTap: function(e) {
+            if ($cordovaNetwork.isOffline()) {
+              e.preventDefault();
+            }
+            window.location.reload();
+          }
+        }]
+      });
     }
 
   });
