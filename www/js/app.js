@@ -96,8 +96,20 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
     $cordovaInAppBrowser.open(url, '_blank');
   };
 
+  if (Boolean(window.localStorage.getItem('notificationsOn'))) {
+    console.log('notifications were already stored as ', Boolean(window.localStorage.getItem('notificationsOn')));
+    self.notificationsOn = Boolean(window.localStorage.getItem('notificationsOn'));
+  } else {
+    console.log('notifications werent stored but there are now set');
+    window.localStorage.setItem('notificationsOn', 'true');
+    self.notificationsOn = Boolean(window.localStorage.getItem('notificationsOn'));
+  };
+
   self.toggleNotifications = function() {
-    if (self.notificationsOn) {
+    console.log('self.notificationsOn is currently', self.notificationsOn);
+    if (notificationsOn) {
+      self.notificationsOn = Boolean(window.localStorage.setItem('notificationsOn', 'true'));
+      console.log('notifications should just have been stored as true');
       $cordovaLocalNotification.schedule({
         id: 1,
         title: "MotherZen",
@@ -110,6 +122,9 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         template: 'You\'ll receive a reminder to check your daily affirmation every morning at 9am.'
       });
     } else {
+      window.localStorage.setItem('notificationsOn', 'true');
+      self.notificationsOn = Boolean(window.localStorage.getItem('notificationsOn', 'false'));
+      console.log('notifications should just have been stored as false');
       $cordovaLocalNotification.cancel(1);
       $ionicPopup.alert({
         title: 'Notifications have been disabled',
