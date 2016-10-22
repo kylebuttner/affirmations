@@ -30,8 +30,9 @@
   <body ng-app="affirmations" ng-controller="MainCtrl as ctrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable slide header-bar" ng-if="hide">
-        <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">The Positive Birth Company</h1>
+      <ion-header-bar class="bar-stable slide header-bar" ng-if="hide" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">
+        <img id="header-logo" class="title" src="img/favicon.png" alt="" />
+        <!-- <h1 class="title" ng-click="ctrl.openLink('http://thepositivebirthcompany.co.uk/')">The Positive Birth Company</h1> -->
       </ion-header-bar>
 
       <div class="main-container" ng-click="hide=!hide">

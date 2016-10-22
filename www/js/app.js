@@ -89,7 +89,11 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
   self.saveToPhotoAlbum = function() {
       $cordovaSocialSharing
-        .saveToPhotoAlbum([getTodaysPhoto()], "Affirmation saved!");
+        .saveToPhotoAlbum([getTodaysPhoto()],
+        $ionicPopup.alert({
+          title: 'Success!',
+          template: 'Today\'s affirmation has been saved to your phone.'
+        }));
   };
 
   self.openLink = function(url) {
@@ -106,7 +110,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   self.toggleNotifications = function() {
     // This line sets the appropriate value in localStorage
     window.localStorage.setItem('notificationsOn', self.notificationsOn);
-    
+
     if (self.notificationsOn) {
       $cordovaLocalNotification.schedule({
         id: 1,
