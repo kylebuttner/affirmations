@@ -93,7 +93,12 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         $ionicPopup.alert({
           title: 'Success!',
           template: 'Today\'s affirmation has been saved to your phone.'
-        }));
+        }),
+        $ionicPopup.alert({
+          title: 'Something went wrong...',
+          template: 'Try again!'
+        })
+      );
   };
 
   self.openLink = function(url) {
