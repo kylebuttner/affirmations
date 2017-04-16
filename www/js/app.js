@@ -156,6 +156,12 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
       return dataURL;
   }
 
+  self.toggleBackground = function () {
+    var mainContainer = document.getElementById('main-container');
+
+    mainContainer.className = 'theatre slide' == mainContainer.className ? 'slide' : 'theatre slide';
+  }
+
 })
 
 .run(function($ionicPlatform, $cordovaNetwork, $ionicPopup) {
