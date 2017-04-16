@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
-.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet, $cordovaLocalNotification, $ionicPopup) {
+.controller('MainCtrl', function($cordovaSocialSharing, $ionicPlatform, $cordovaInAppBrowser, $cordovaActionSheet, $cordovaLocalNotification, $ionicPopup, $cordovaInstagram) {
   var self = this;
 
   var today = new Date();
@@ -61,10 +61,16 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
   self.todaysPhoto = getTodaysPhoto();
 
+  var image = new Image();
+  image.src = self.todaysPhoto;
+  image.onload = function() {
+      self.todaysPhotoAsDataUri = getBase64Image(image);
+  };
+
   self.shareAnywhere = function() {
     var actionSheetOptions = {
-      title: 'Share this image via',
-      buttonLabels: ['Facebook', 'Twitter'],
+      title: 'Share your affirmation',
+      buttonLabels: ['Instagram', 'Facebook', 'Twitter'],
       addCancelButtonWithLabel: 'Cancel',
       androidEnableCancelButton : true,
       winphoneEnableCancelButton : true,
@@ -75,8 +81,10 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         var index = btnIndex;
 
         if (index === 1) {
-          $cordovaSocialSharing.shareViaFacebook("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
+          $cordovaInstagram.share({image: self.todaysPhotoAsDataUri, caption: "This is my daily affirmation from @MotherZen :)"});
         } else if (index === 2) {
+          $cordovaSocialSharing.shareViaFacebook("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
+        } else if (index === 3) {
           $cordovaSocialSharing.shareViaTwitter("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
         }
       });
@@ -135,6 +143,18 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   $ionicPlatform.on('resume', function(){
     today = new Date();
   });
+
+  function getBase64Image(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      var dataURL = canvas.toDataURL("image/png");
+
+      return dataURL;
+  }
 
 })
 
