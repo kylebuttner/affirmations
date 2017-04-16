@@ -134,7 +134,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
           template: 'You\'ll receive a reminder to check your daily affirmation every morning at 9am.'
         });
       } else {
-        $cordovaLocalNotification.cancel(1);
+        $cordovaLocalNotification.cancelAll();
         $ionicPopup.alert({
           title: 'Notifications have been disabled',
           template: 'You\'ll no longer receive reminders to check your daily affirmation.'
