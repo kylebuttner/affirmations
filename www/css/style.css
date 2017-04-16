@@ -33,6 +33,7 @@ h1 {
   background-color: #fff;
   width: 100vw;
   height: 100vh;
+  transition: background 0.1s linear;
 }
 
 #main-container img {
@@ -55,9 +56,9 @@ h1 {
 /* Header bars */
 
 .bar.bar-stable.header-bar {
-  background-color: #fff;
+  background-color: transparent !important;
   background-image: none;
-  /*border-color: transparent;*/
+  border-color: transparent;
   height: 90px !important;
 }
 
@@ -129,9 +130,9 @@ i.ion.ion-ios-close-empty {
 }
 
 .bar.bar-stable.footer-bar {
-  background-color: #fff !important;
+  background-color: transparent !important;
   background-image: none;
-  /*border-color: transparent;*/
+  border-color: transparent;
   color: #fff;
   height: 50px;
 }
@@ -139,7 +140,7 @@ i.ion.ion-ios-close-empty {
 /* CSS Animations */
 
 .slide.ng-enter {
-  transition:0.2s linear all;
+  transition:0.1s linear all;
   opacity:0;
 }
 
@@ -148,7 +149,7 @@ i.ion.ion-ios-close-empty {
 }
 
 .slide.ng-leave {
-  transition:0.2s linear all;
+  transition:0.1s linear all;
   opacity:1;
 }
 
