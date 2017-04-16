@@ -62,7 +62,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   self.todaysPhoto = getTodaysPhoto();
 
   var image = new Image();
-  image.src = self.todaysPhoto;
+  image.src = getTodaysPhoto();
   image.onload = function() {
       self.todaysPhotoAsDataUri = getBase64Image(image);
   };
@@ -70,7 +70,7 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   self.shareAnywhere = function() {
     var actionSheetOptions = {
       title: 'Share your affirmation',
-      buttonLabels: ['Instagram', 'Facebook', 'Twitter'],
+      buttonLabels: ['Instagram', 'Facebook', 'Twitter', 'Email'],
       addCancelButtonWithLabel: 'Cancel',
       androidEnableCancelButton : true,
       winphoneEnableCancelButton : true,
@@ -86,6 +86,8 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
           $cordovaSocialSharing.shareViaFacebook("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
         } else if (index === 3) {
           $cordovaSocialSharing.shareViaTwitter("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
+        } else if (index === 4) {
+          $cordovaSocialSharing.shareViaEmail("Download MotherZen from the App Store to get a daily positive affirmation directly to your phone!", "Check out my daily affirmation from MotherZen :)", [], [], [], getTodaysPhoto());
         }
       });
   };
