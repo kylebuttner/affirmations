@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.thepositivebirthcompany.positiveaffirmations" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>PositiveAffirmations</name>
+<widget id="com.thepositivebirthcompany.motherzen" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MotherZen</name>
     <description>
-      An app that empowers pregnant women by sending them a new positive affirmation every day throughout their pregnancy.
+      The Positive Affirmations for Pregnancy app is designed to support and empower women as they prepare for birth.
     </description>
     <author email="thedoublemama@gmail.com" href="http://thepositivebirthcompany.co.uk/">
       Siobhan Miller
