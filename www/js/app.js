@@ -112,33 +112,47 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
   if (Boolean(window.localStorage.getItem('notificationsOn'))) {
     self.notificationsOn = (window.localStorage.getItem('notificationsOn')) === "true";
   } else {
-    window.localStorage.setItem('notificationsOn', 'true');
-    self.notificationsOn = true;
+    window.localStorage.setItem('notificationsOn', 'false');
+    self.notificationsOn = false;
   };
 
   self.toggleNotifications = function() {
-    // This line sets the appropriate value in localStorage
-    window.localStorage.setItem('notificationsOn', self.notificationsOn);
+    $cordovaLocalNotification.hasPermission().then(function (yes) {
+      // This line sets the appropriate value in localStorage
+      window.localStorage.setItem('notificationsOn', self.notificationsOn);
 
-    if (self.notificationsOn) {
-      $cordovaLocalNotification.schedule({
-        id: 1,
-        title: "MotherZen",
-        text: "Check your affirmation for the day!",
-        every: "minute",
-        at: getNext9am()
+      if (self.notificationsOn) {
+        $cordovaLocalNotification.schedule({
+          id: 1,
+          title: "MotherZen",
+          text: "Check your affirmation for the day!",
+          every: "minute",
+          at: getNext9am()
+        });
+        $ionicPopup.alert({
+          title: 'Notifications are now on!',
+          template: 'You\'ll receive a reminder to check your daily affirmation every morning at 9am.'
+        });
+      } else {
+        $cordovaLocalNotification.cancel(1);
+        $ionicPopup.alert({
+          title: 'Notifications have been disabled',
+          template: 'You\'ll no longer receive reminders to check your daily affirmation.'
+        });
+      }
+    }, function (no) {
+      $cordovaLocalNotification.registerPermission().then(function (yes) {
+        self.toggleNotifications();
+      }, function (no) {
+        window.localStorage.setItem('notificationsOn', 'false');
+        self.notificationsOn = false;
+        $ionicPopup.alert({
+          title: 'MotherZen can\'t send you any notifications.',
+          template: 'Please update your settings if you\'d like to receive a daily alert.'
+        });
       });
-      $ionicPopup.alert({
-        title: 'Notifications are now on!',
-        template: 'You\'ll receive a reminder to check your daily affirmation every morning at 9am.'
-      });
-    } else {
-      $cordovaLocalNotification.cancel(1);
-      $ionicPopup.alert({
-        title: 'Notifications have been disabled',
-        template: 'You\'ll no longer receive reminders to check your daily affirmation.'
-      });
-    }
+    })
+
   }
 
   $ionicPlatform.on('resume', function(){
@@ -177,10 +191,6 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
     if(window.StatusBar) {
       StatusBar.styleDefault();
-    }
-
-    if(device.platform === "iOS") {
-      window.plugin.notification.local.registerPermission();
     }
 
     if($cordovaNetwork.isOffline()) {
