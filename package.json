@@ -4,6 +4,7 @@
   "description": "An Ionic project",
   "dependencies": {
     "angular-base64": "^2.0.5",
+    "cordova-custom-config": "file:node_modules/cordova-custom-config",
     "cordova-save-image-gallery": "0.0.19",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
