@@ -81,13 +81,13 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
         var index = btnIndex;
 
         if (index === 1) {
-          $cordovaInstagram.share({image: self.todaysPhotoAsDataUri, caption: "This is my daily affirmation from @MotherZen :)"});
+          $cordovaInstagram.share({image: self.todaysPhotoAsDataUri, caption: "This is my daily affirmation from MotherZen via @thepositivebirthcompany"});
         } else if (index === 2) {
-          $cordovaSocialSharing.shareViaFacebook("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk");
+          $cordovaSocialSharing.shareViaFacebook("Check out my daily affirmation from MotherZen :)", getTodaysPhoto());
         } else if (index === 3) {
-          $cordovaSocialSharing.shareViaTwitter("This is my daily affirmation! Check out", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
+          $cordovaSocialSharing.shareViaTwitter("Check out my daily affirmation from MotherZen by @PositiveBirthCo", getTodaysPhoto(), "http://thepositivebirthcompany.co.uk/");
         } else if (index === 4) {
-          $cordovaSocialSharing.shareViaEmail("Download MotherZen from the App Store to get a daily positive affirmation directly to your phone!", "Check out my daily affirmation from MotherZen :)", [], [], [], getTodaysPhoto());
+          $cordovaSocialSharing.shareViaEmail("Download MotherZen from the App Store to get a daily positive affirmation directly to your phone!", "Check out my daily affirmation from MotherZen by thepositivebirthcompany.co.uk :)", [], [], [], getTodaysPhoto());
         }
       });
   };
