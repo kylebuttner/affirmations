@@ -6493,17 +6493,17 @@ angular.module('ngCordova.plugins.socialSharing', [])
         return q.promise;
       },
 
-      saveToPhotoAlbum: function (arrayOfUrls, successMessage, errorMessage) {
+      saveToPhotoAlbum: function (arrayOfUrls, successFunction, errorFunction) {
         var q = $q.defer();
         arrayOfUrls = arrayOfUrls || null;
-        successMessage = successMessage || "Success!";
-        errorMessage = errorMessage || "Error";
+        // successMessage = successMessage || "Success!";
+        // errorMessage = errorMessage || "Error";
+        //
+        // var onSuccess = function(message) {
+        //   alert(message);
+        // };
 
-        var onSuccess = function(message) {
-          alert(message);
-        };
-
-        $window.plugins.socialsharing.saveToPhotoAlbum(arrayOfUrls, onSuccess(successMessage), function () {
+        $window.plugins.socialsharing.saveToPhotoAlbum(arrayOfUrls, successFunction, function () {
           q.resolve(true);
         }, function () {
           q.reject(false);

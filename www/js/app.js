@@ -92,16 +92,17 @@ var app = angular.module('affirmations', ['ionic', 'ngCordova', 'ngAnimate'])
 
   self.saveToPhotoAlbum = function() {
       $cordovaSocialSharing
-        .saveToPhotoAlbum([getTodaysPhoto()],
-        $ionicPopup.alert({
-          title: 'Success!',
-          template: 'Today\'s affirmation has been saved to your phone.'
-        }),
-        $ionicPopup.alert({
-          title: 'Something went wrong...',
-          template: 'Try again!'
-        })
-      );
+        .saveToPhotoAlbum([getTodaysPhoto()], function () {
+          $ionicPopup.alert({
+            title: 'Success!',
+            template: 'Today\'s affirmation has been saved to your phone.'
+          })
+        }, function () {
+          $ionicPopup.alert({
+            title: 'Something went wrong...',
+            template: 'Try again!'
+          })
+        });
   };
 
   self.openLink = function(url) {
